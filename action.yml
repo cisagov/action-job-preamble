@@ -8,13 +8,19 @@ description: >-
   be applied at the beginning of each GitHub Actions job.
 name: Job preamble
 
+inputs:
+  actions_permissions_config:
+    description: >-
+      The permission configuration to use.  You will usually want to
+      set this to `${{ vars.ACTIONS_PERMISSIONS_CONFIG }}`.
+    required: true
+
 runs:
   using: composite
   steps:
     - uses: GitHubSecurityLab/actions-permissions/monitor@v1
       with:
-        # Use the organization variable if it exists.
-        config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
+        config: ${{ inputs.actions_permissions_config }}
     - id: harden-runner
       name: Harden the runner
       uses: step-security/harden-runner@v2

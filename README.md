@@ -10,12 +10,9 @@ beginning of every GitHub Actions job.
 
 ### Inputs ###
 
-None.
-<!--
 | Name | Description | Interpreted Type | Default | Required |
 |------|-------------|------------------|---------|:--------:|
-| input_name | The input's description. | `string` | n/a | yes |
--->
+| actions_permissions_config | The permissions configuration to use.  You will usually want to set this to `${{ vars.ACTIONS_PERMISSIONS_CONFIG }}`. | `string` | n/a | yes |
 
 ### Outputs ###
 
@@ -47,6 +44,8 @@ jobs:
     steps:
       - name: Apply standard cisagov job preamble
         uses: cisagov/action-job-preamble@develop
+        with:
+          actions_permissions_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
 ```
 
 ## Contributing ##
