@@ -1,0 +1,22 @@
+---
+author: Cybersecurity and Infrastructure Security Agency
+branding:
+  color: blue
+  icon: shield
+description: >-
+  Our standard permissions monitoring and runner hardening that is to
+  be applied at the beginning of each GitHub Actions job.
+name: Job preamble
+
+runs:
+  using: composite
+  steps:
+    - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      with:
+        # Use the organization variable if it exists.
+        config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
+    - id: harden-runner
+      name: Harden the runner
+      uses: step-security/harden-runner@v2
+      with:
+        egress-policy: audit
