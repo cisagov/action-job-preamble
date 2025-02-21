@@ -2,22 +2,52 @@
 
 [![GitHub Build Status](https://github.com/cisagov/action-job-preamble/workflows/build/badge.svg)](https://github.com/cisagov/action-job-preamble/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub project started.
-This skeleton project contains [licensing information](LICENSE), as
-well as [pre-commit hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
+A GitHub Action to apply the standard permissions monitoring and
+runner hardening.  This Action is intended to be applied at the
+beginning of every GitHub Actions job.
 
-In many cases you will instead want to use one of the more specific
-skeleton projects derived from this one.
+## Usage ##
 
-## New Repositories from a Skeleton ##
+### Inputs ###
 
-Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
-for step-by-step instructions on how to start a new repository from
-a skeleton. This will save you time and effort when configuring a
-new repository!
+None.
+<!--
+| Name | Description | Interpreted Type | Default | Required |
+|------|-------------|------------------|---------|:--------:|
+| input_name | The input's description. | `string` | n/a | yes |
+-->
+
+### Outputs ###
+
+None.
+<!--
+| Name | Description | Output Type |
+|------|-------------|-------------|
+| output_name | The output's description. | `output_type` |
+-->
+
+### Sample GitHub Actions workflow ###
+
+This GitHub Action only makes changes to the runner and therefore
+requires no permissions.
+
+```yml
+---
+name: The workflow
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  my_job:
+    # This job does not need any permissions
+    permissions: {}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply standard cisagov job preamble
+        uses: cisagov/action-job-preamble@develop
+```
 
 ## Contributing ##
 
