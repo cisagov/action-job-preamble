@@ -13,6 +13,7 @@ beginning of every GitHub Actions job.
 | Name | Description | Interpreted Type | Default | Required |
 |------|-------------|------------------|---------|:--------:|
 | actions_permissions_config | A JSON string containing the permissions configuration to use for permissions monitoring.  In the case of cisagov you will usually want to set this to `${{ vars.ACTIONS_PERMISSIONS_CONFIG }}` so it agrees with our organization-wide GitHub Actions permissions configuration.  See [the documentation for the GitHubSecurityLab/actions-permissions/monitor action](https://github.com/GitHubSecurityLab/actions-permissions/tree/main/monitor#configuration) for more details. | `string` | n/a | yes |
+| harden_runner_egress_policy | The egress policy to use for runner hardening.  See [step-security/harden-runner](https://github.com/step-security/harden-runner) for more details and valid values. | `string` | `audit` | no |
 
 ### Outputs ###
 

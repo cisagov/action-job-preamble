@@ -21,6 +21,12 @@ inputs:
       details:
       https://github.com/GitHubSecurityLab/actions-permissions/tree/main/monitor#configuration
     required: true
+  harden_runner_egress_policy:
+    default: audit
+    description: >-
+      The egress policy to use for runner hardening.  See
+      step-security/harden-runner for more details and valid values.
+    required: false
 
 runs:
   using: composite
@@ -32,4 +38,4 @@ runs:
       name: Harden the runner
       uses: step-security/harden-runner@v2
       with:
-        egress-policy: audit
+        egress-policy: ${{ inputs.harden_runner_egress_policy }}
