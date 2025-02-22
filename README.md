@@ -12,7 +12,7 @@ beginning of every GitHub Actions job.
 
 | Name | Description | Interpreted Type | Default | Required |
 |------|-------------|------------------|---------|:--------:|
-| actions_permissions_config | The permissions configuration to use.  You will usually want to set this to `${{ vars.ACTIONS_PERMISSIONS_CONFIG }}`. | `string` | n/a | yes |
+| actions_permissions_config | A JSON string containing the permissions configuration to use for permissions monitoring.  In the case of cisagov you will usually want to set this to `${{ vars.ACTIONS_PERMISSIONS_CONFIG }}` so it agrees with our organization-wide GitHub Actions permissions configuration.  See [the documentation for the GitHubSecurityLab/actions-permissions/monitor action](https://github.com/GitHubSecurityLab/actions-permissions/tree/main/monitor#configuration) for more details. | `string` | n/a | yes |
 
 ### Outputs ###
 
@@ -38,7 +38,7 @@ on:
 
 jobs:
   my_job:
-    # This job does not need any permissions
+    # This job does not need any permissions.
     permissions: {}
     runs-on: ubuntu-latest
     steps:
