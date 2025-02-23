@@ -1,0 +1,44 @@
+---
+author: Cybersecurity and Infrastructure Security Agency
+branding:
+  color: blue
+  icon: shield
+description: >-
+  Our standard permissions monitoring and runner hardening that is to
+  be applied at the beginning of each GitHub Actions job.
+name: Job preamble
+
+inputs:
+  harden_runner_egress_policy:
+    default: audit
+    description: >-
+      The egress policy to use for runner hardening.  Valid values are
+      audit and block.  See step-security/harden-runner for more
+      details.
+    required: false
+  permissions_monitoring_config:
+    default: ""
+    description: >-
+      A JSON string containing the configuration to use for
+      permissions monitoring.  In the case of cisagov you will almost
+      usually to set this to `\$\{\{ vars.ACTIONS_PERMISSIONS_CONFIG
+      \}\}` so it agrees with our organization-wide GitHub Actions
+      permissions monitoring configuration.  See the documentation for
+      the GitHubSecurityLab/actions-permission/monitor action for more
+      details:
+      https://github.com/GitHubSecurityLab/actions-permissions/tree/main/monitor#configuration
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - id: monitor-actions-permissions
+      name: Monitor GitHub Actions permissions
+      uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      with:
+        config: ${{ inputs.permissions_monitoring_config }}
+    - id: harden-runner
+      name: Harden the runner
+      uses: step-security/harden-runner@v2
+      with:
+        egress-policy: ${{ inputs.harden_runner_egress_policy }}
