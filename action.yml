@@ -12,8 +12,9 @@ inputs:
   harden_runner_egress_policy:
     default: audit
     description: >-
-      The egress policy to use for runner hardening.  See
-      step-security/harden-runner for more details and valid values.
+      The egress policy to use for runner hardening.  Valid values are
+      audit and block.  See step-security/harden-runner for more
+      details.
     required: false
   permissions_monitoring_config:
     default: ""
