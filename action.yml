@@ -32,7 +32,9 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+    - id: monitor-actions-permissions
+      name: Monitor GitHub Actions permissions
+      uses: GitHubSecurityLab/actions-permissions/monitor@v1
       with:
         config: ${{ inputs.permissions_monitoring_config }}
     - id: harden-runner
