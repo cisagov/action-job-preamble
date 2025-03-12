@@ -9,12 +9,26 @@ description: >-
 name: Job preamble
 
 inputs:
+  harden_runner:
+    default: "true"
+    description: >-
+      A Boolean ("true"/"false") value indicating whether or not to
+      harden the runner using the step-security/harden-runner GitHub
+      action.
+    required: false
   harden_runner_egress_policy:
     default: audit
     description: >-
       The egress policy to use for runner hardening.  Valid values are
       audit and block.  See step-security/harden-runner for more
       details.
+    required: false
+  monitor_permissions:
+    default: "true"
+    description: >-
+      A Boolean ("true"/"false") value indicating whether or not to
+      monitor GitHub permission requests using the
+      GitHubSecurityLab/actions-permission/monitor GitHub action.
     required: false
   permissions_monitoring_config:
     default: ""
@@ -33,11 +47,13 @@ runs:
   using: composite
   steps:
     - id: monitor-actions-permissions
+      if: ${{ inputs.monitor_permissions == 'true' }}
       name: Monitor GitHub Actions permissions
       uses: GitHubSecurityLab/actions-permissions/monitor@v1
       with:
         config: ${{ inputs.permissions_monitoring_config }}
     - id: harden-runner
+      if: ${{ inputs.harden_runner == 'true' }}
       name: Harden the runner
       uses: step-security/harden-runner@v2
       with:
