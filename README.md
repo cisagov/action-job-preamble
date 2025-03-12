@@ -12,7 +12,9 @@ beginning of every GitHub Actions job.
 
 | Name | Description | Interpreted Type | Default | Required |
 |------|-------------|------------------|---------|:--------:|
+| harden_runner | A Boolean (`"true"`/`"false"`) value indicating whether or not to harden the runner using the [step-security/harden-runner](https://github.com/step-security/harden-runner) GitHub action. | `bool` | `true` | no |
 | harden_runner_egress_policy | The egress policy to use for runner hardening.  Valid values are audit and block.  See [step-security/harden-runner](https://github.com/step-security/harden-runner) for more details. | `string` | `audit` | no |
+| monitor_permissions | A Boolean (`"true"`/`"false"`) value indicating whether or not to monitor GitHub permission requests using the [GitHubSecurityLab/actions-permission/monitor](https://github.com/GitHubSecurityLab/actions-permission/monitor) GitHub action. | `bool` | `true` | no |
 | permissions_monitoring_config | A JSON string containing the configuration to use for permissions monitoring.  In the case of cisagov you will usually want to set this to `${{ vars.ACTIONS_PERMISSIONS_CONFIG }}` so it agrees with our organization-wide GitHub Actions permissions monitoring configuration.  See [the documentation for the GitHubSecurityLab/actions-permissions/monitor action](https://github.com/GitHubSecurityLab/actions-permissions/tree/main/monitor#configuration) for more details. | `string` | `""` | no |
 
 ### Outputs ###
