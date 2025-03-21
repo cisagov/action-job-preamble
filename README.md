@@ -2,9 +2,10 @@
 
 [![GitHub Build Status](https://github.com/cisagov/action-job-preamble/workflows/build/badge.svg)](https://github.com/cisagov/action-job-preamble/actions)
 
-A GitHub Action to apply the standard permissions monitoring and
-runner hardening.  This Action is intended to be applied at the
-beginning of every GitHub Actions job.
+A GitHub Action to apply the standard permissions monitoring, runner
+hardening, GitHub status checking, and output the workflow context.
+This Action is intended to be applied at the beginning of every GitHub
+Actions job.
 
 ## Usage ##
 
@@ -12,9 +13,11 @@ beginning of every GitHub Actions job.
 
 | Name | Description | Interpreted Type | Default | Required |
 |------|-------------|------------------|---------|:--------:|
+| check_github_status | A Boolean (`"true"`/`"false"`) value indicating whether or not to check GitHub status using the [crazy-max/ghaction-github-status](https://github.com/crazy-max/ghaction-github-status) GitHub action. | `bool` | `false` | no |
 | harden_runner | A Boolean (`"true"`/`"false"`) value indicating whether or not to harden the runner using the [step-security/harden-runner](https://github.com/step-security/harden-runner) GitHub action. | `bool` | `true` | no |
 | harden_runner_egress_policy | The egress policy to use for runner hardening.  Valid values are audit and block.  See [step-security/harden-runner](https://github.com/step-security/harden-runner) for more details. | `string` | `audit` | no |
 | monitor_permissions | A Boolean (`"true"`/`"false"`) value indicating whether or not to monitor GitHub permission requests using the [GitHubSecurityLab/actions-permission/monitor](https://github.com/GitHubSecurityLab/actions-permission/monitor) GitHub action. | `bool` | `true` | no |
+| output_workflow_context | A Boolean (`"true"`/`"false"`) value indicating whether or not to output the workflow context using the [crazy-max/ghaction-dump-context](https://github.com/crazy-max/ghaction-dump-context) GitHub action. | `bool` | `false` | no |
 | permissions_monitoring_config | A JSON string containing the configuration to use for permissions monitoring.  In the case of cisagov you will usually want to set this to `${{ vars.ACTIONS_PERMISSIONS_CONFIG }}` so it agrees with our organization-wide GitHub Actions permissions monitoring configuration.  See [the documentation for the GitHubSecurityLab/actions-permissions/monitor action](https://github.com/GitHubSecurityLab/actions-permissions/tree/main/monitor#configuration) for more details. | `string` | `""` | no |
 
 ### Outputs ###
