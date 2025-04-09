@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Apply standard cisagov job preamble
-        uses: cisagov/action-job-preamble@v1
+        uses: cisagov/action-job-preamble@f3e1d43556bc9fef1fa4d6f27fa88b1b5c82c788 # v1.2.0
         with:
           actions_permissions_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
 ```
