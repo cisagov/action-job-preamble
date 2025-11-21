@@ -1,6 +1,8 @@
 # action-job-preamble #
 
 [![GitHub Build Status](https://github.com/cisagov/action-job-preamble/workflows/build/badge.svg)](https://github.com/cisagov/action-job-preamble/actions)
+[![License](https://img.shields.io/github/license/cisagov/action-job-preamble)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/action-job-preamble/workflows/CodeQL/badge.svg)](https://github.com/cisagov/action-job-preamble/actions/workflows/codeql-analysis.yml)
 
 A GitHub Action to apply the standard permissions monitoring, runner
 hardening, GitHub status checking, and output the workflow context.
