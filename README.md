@@ -14,7 +14,7 @@ Actions job.
 ### Inputs ###
 
 | Name | Description | Interpreted Type | Default | Required |
-|------|-------------|------------------|---------|:--------:|
+| ---- | ----------- | ---------------- | ------- | :------: |
 | check_github_status | A Boolean (`"true"`/`"false"`) value indicating whether or not to check GitHub status using the [crazy-max/ghaction-github-status](https://github.com/crazy-max/ghaction-github-status) GitHub action. | `bool` | `false` | no |
 | harden_runner | A Boolean (`"true"`/`"false"`) value indicating whether or not to harden the runner using the [step-security/harden-runner](https://github.com/step-security/harden-runner) GitHub action. | `bool` | `true` | no |
 | harden_runner_egress_policy | The egress policy to use for runner hardening.  Valid values are audit and block.  See [step-security/harden-runner](https://github.com/step-security/harden-runner) for more details. | `string` | `audit` | no |
@@ -27,7 +27,7 @@ Actions job.
 None.
 <!--
 | Name | Description | Output Type |
-|------|-------------|-------------|
+| ---- | ----------- | ----------- |
 | output_name | The output's description. | `output_type` |
 -->
 
