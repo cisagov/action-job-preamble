@@ -207,6 +207,15 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
+      # This needs to run after the terraform_validate hook so that any Terraform
+      # configurations are initialized.
+      - id: terraform_providers_lock
+        args:
+          - --args=-platform=darwin_amd64
+          - --args=-platform=darwin_arm64
+          - --args=-platform=linux_amd64
+          - --args=-platform=linux_arm64
+          - --hook-config=--mode=always-regenerate-lockfile
 
   # Docker hooks
   - repo: https://github.com/IamTheFij/docker-pre-commit
