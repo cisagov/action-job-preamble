@@ -27,12 +27,12 @@ max-line-length = 80
 select = C,C4,D,DUO,E,F,N,NQA,W,B,B950
 
 # Ignore
-# * E203: flake8's default warning about whitespace before ':' because Black enforces
+# * E203: pycodestyle's default warning about whitespace before ':' because Black enforces
 #   an equal amount of whitespace around slice operators (':').
-# * E501: flake8's default warning about maximum line length, which has a hard stop
+# * E501: pycodestyle's default warning about maximum line length, which has a hard stop
 #   at the configured value.  Instead we use flake8-bugbear's B950, which
 #   allows up to 10% overage.
-# * W503: flake8's warning about line breaks before binary operators.  It no longer
+# * W503: pycodestyle's warning about line breaks before binary operators.  It no longer
 #   agrees with PEP8.  See, for example, here:
 #   https://github.com/ambv/black/issues/21
 #   Guido agrees here:
