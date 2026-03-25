@@ -193,7 +193,10 @@ repos:
 
   # Ansible hooks
   - repo: https://github.com/ansible/ansible-lint
-    rev: v26.3.0
+    # We need to stay on this version because we are still using Python 3.13 in
+    # our GitHub Actions configuration. Later versions require Python 3.14 for
+    # the hook to run.
+    rev: v26.1.1
     hooks:
       - id: ansible-lint
         additional_dependencies:
