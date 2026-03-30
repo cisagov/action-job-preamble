@@ -98,4 +98,4 @@ runs:
     - id: output-workflow-context
       if: ${{ inputs.output_workflow_context == 'true' }}
       name: Output workflow context
-      uses: crazy-max/ghaction-dump-context@v2
+      uses: crazy-max/ghaction-dump-context@v3
